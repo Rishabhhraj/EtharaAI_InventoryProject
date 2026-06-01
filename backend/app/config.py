@@ -1,3 +1,4 @@
+from pydantic import AliasChoices, Field
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
@@ -6,8 +7,9 @@ class Settings(BaseSettings):
 
     database_url: str = "postgresql://inventory:inventory@localhost:5432/inventory_db"
     api_host: str = "0.0.0.0"
-    api_port: int = 8000
+    api_port: int = Field(default=8000, validation_alias=AliasChoices("PORT", "API_PORT"))
     cors_origins: str = "http://localhost:5173,http://localhost:3000"
+    cors_origin_regex: str | None = None
     debug: bool = False
 
     @property

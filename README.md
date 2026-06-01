@@ -116,50 +116,22 @@ docker push yourusername/inventory-frontend:latest
 
 **Docker image link format:** `https://hub.docker.com/r/yourusername/inventory-api`
 
-## Free deployment (public URLs)
+## Live demo
 
-### 1. PostgreSQL
+Deploy with **[DEPLOYMENT.md](./DEPLOYMENT.md)** — recommended free stack: **Neon** (database) + **Render** (API) + **Vercel** (frontend).
 
-Use a free managed Postgres provider, e.g.:
-
-- [Neon](https://neon.tech)
-- [Supabase](https://supabase.com)
-- [Render PostgreSQL](https://render.com)
-
-Copy the connection string into `DATABASE_URL`.
-
-### 2. Backend (Render)
-
-1. Create a **Web Service** from your GitHub repo, root directory `backend`.
-2. Environment variables:
-   - `DATABASE_URL` = your Postgres URL
-   - `CORS_ORIGINS` = your frontend URL (e.g. `https://your-app.vercel.app`)
-3. Start command: `uvicorn app.main:app --host 0.0.0.0 --port $PORT`
-4. Or deploy via Docker using `backend/Dockerfile`.
-
-**Backend URL example:** `https://inventory-api.onrender.com`
-
-### 3. Frontend (Vercel / Netlify)
-
-1. Import the repo, set root to `frontend`.
-2. Build command: `npm run build`
-3. Output directory: `dist`
-4. Environment variable:
-   - `VITE_API_URL` = your deployed API URL
-
-**Frontend URL example:** `https://inventory-app.vercel.app`
-
-Update `CORS_ORIGINS` on the API to include the frontend URL after deploy.
-
-### Alternative: full stack on Render
-
-Deploy `docker-compose.yml` services individually on Render, or use the Docker images with Render’s Docker deploy.
+| | URL |
+|---|-----|
+| **App** | _Add your Vercel URL after deploy_ |
+| **API** | _Add your Render URL after deploy_ |
+| **API docs** | `https://YOUR-API.onrender.com/docs` |
+| **GitHub** | https://github.com/Rishabhhraj/EtharaAI_InventoryProject |
 
 ## Submission checklist
 
-- [ ] **GitHub repository** — push this repo (frontend + backend)
-- [ ] **Docker image link** — push images to Docker Hub and add links in README
-- [ ] **Live URLs** — deployed frontend + backend + note in README
+- [x] **GitHub repository** — [EtharaAI_InventoryProject](https://github.com/Rishabhhraj/EtharaAI_InventoryProject)
+- [ ] **Docker image link** — GitHub Actions → Docker Hub (see [DEPLOYMENT.md](./DEPLOYMENT.md))
+- [ ] **Live URLs** — fill in the table above after deploy
 
 ## Tech stack
 
